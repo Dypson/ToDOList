@@ -10,6 +10,13 @@ import UIKit
 
 class SecondViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var inputString: UITextField!
+    @IBAction func AddItem(_ sender: Any) {
+        if(inputString.text != ""){
+            items.append(inputString.text!)
+            inputString.text=""
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
