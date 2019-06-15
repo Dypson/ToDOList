@@ -8,13 +8,19 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
-
+class SecondViewController: UIViewController, UITextFieldDelegate{
+    @IBOutlet weak var inputString: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+       inputString.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+       self.view.endEditing(true)
+    }
 }
 
