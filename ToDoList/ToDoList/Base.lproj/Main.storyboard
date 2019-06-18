@@ -43,7 +43,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="ToDoList" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="myTableView" destination="WPw-ZA-zh0" id="9rC-ld-e9u"/>
+                        <outlet property="table" destination="WPw-ZA-zh0" id="H59-xp-cDS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -59,15 +59,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ZG-ew-Un0">
-                                <rect key="frame" x="143" y="130" width="117" height="3"/>
+                                <rect key="frame" x="143" y="133" width="117" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Item"/>
                                 <connections>
                                     <action selector="AddItem:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="r0L-am-Xre"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l9R-2y-icN">
-                                <rect key="frame" x="58" y="68" width="259" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Eg: Drink Water" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l9R-2y-icN">
+                                <rect key="frame" x="65" y="82" width="259" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

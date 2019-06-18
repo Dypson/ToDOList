@@ -1,25 +1,28 @@
-//
 //  SecondViewController.swift
 //  ToDoList
 //
 //  Created by Deepson on 6/15/19.
 //  Copyright © 2019 Deepson. All rights reserved.
-//
-
 import UIKit
 
 class SecondViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var inputString: UITextField!
     @IBAction func AddItem(_ sender: Any) {
-        if(inputString.text != ""){
+        let itemsObject=UserDefaults.standard.object(forKey: "items")
+        var items:[String]
+        if let tempItems = itemsObject as?[String]{
+            items=tempItems
             items.append(inputString.text!)
-            inputString.text=""
+        }else{
+            items=[inputString.text!]
         }
-        
-    }
+UserDefaults.standard.set(items, forKey: "items")
+inputString.text=""
+        self.view.endEditing(true)
+            }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
      func textFieldShouldReturn(_ textField: UITextField) -> Bool{
        inputString.resignFirstResponder()

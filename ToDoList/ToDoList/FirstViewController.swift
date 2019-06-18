@@ -7,36 +7,47 @@
 //
 
 import UIKit
- var items = [""]
-class FirstViewController: UIViewController, UITextFieldDelegate ,UITableViewDataSource {
-    @IBOutlet weak var myTableView: UITableView!
 
+
+class FirstViewController: UIViewController, UITextFieldDelegate ,UITableViewDataSource {
+
+    @IBOutlet var table: UITableView!
+    
+    var items: [String] = []
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
        return items.count
     }
     
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = UITableViewCell.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
-        cell.textLabel?.text=items[indexPath.row]
+        var cellLabel=""
+        if let tempLabel=items[indexPath.row] as? String{
+            cellLabel=tempLabel
+        }
+        cell.textLabel?.text=cellLabel
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
         if editingStyle == UITableViewCell.EditingStyle.delete {
             items.remove(at: indexPath.row)
-            myTableView.reloadData()
         }
+    table.reloadData()
+    UserDefaults.standard.set(items, forKey: "items")
     }
-    override func viewDidAppear(_ animated: Bool) {
-        myTableView.reloadData()
-    }
-    override func viewDidLoad() {
+
+ override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let itemsObject = UserDefaults.standard.object(forKey: "items")
+        
+        if let tempItems = itemsObject as? [String] {
+            items = tempItems
+    }
+       table.reloadData()
 }
-
+}
